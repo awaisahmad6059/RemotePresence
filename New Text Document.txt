@@ -1,0 +1,5 @@
+cloudinary apis change 
+
+signup activity
+UserCreateNewTaskFragment
+user profile fragment

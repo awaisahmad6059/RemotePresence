@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Authentication.LoginActivity">
+
+    <!-- Main content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tv_create_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login Your \nAccount"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinssemibold"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="16dp" />
+
+        <!-- Email input -->
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="email "
+            android:textColor="@color/black"
+            android:drawablePadding="12dp"
+            android:fontFamily="@font/interregular"
+            android:layout_marginBottom="16dp"
+            android:inputType="textEmailAddress"
+            android:drawableStart="@drawable/email"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:background="@drawable/rounded_corner_background" />
+
+        <!-- Password input -->
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:drawablePadding="12dp"
+            android:textColor="@color/black"
+            android:drawableStart="@drawable/password"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_corner_background"
+            android:inputType="textPassword" />
+
+        <!-- Sign in button -->
+        <Button
+            android:id="@+id/btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign in"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/btncolor"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp" />
+
+        <!-- Sign up link -->
+        <TextView
+            android:id="@+id/tv_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create a new account? sign up"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppinssemibold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="32dp"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <!-- WhatsApp Icon -->
+</FrameLayout>

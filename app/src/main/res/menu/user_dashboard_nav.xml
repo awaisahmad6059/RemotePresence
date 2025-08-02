@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/mytask"
+        android:icon="@drawable/chat"
+        android:title="My TAsks" />
+
+    <item
+        android:id="@+id/newtask"
+        android:icon="@drawable/add"
+        android:title="New Tasks" />
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/about"
+        android:title="About" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/account_24"
+        android:title="Profile" />
+
+
+</menu>

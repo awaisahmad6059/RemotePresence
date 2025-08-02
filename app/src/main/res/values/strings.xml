@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SahulatKaar</string>
+    <string name="back_button_desc">Back Button</string>
+    <string name="search_button_desc">Search</string>
+    <string name="notification_button_desc">Notifications</string>
+    <string name="add_user">Add User</string>
+    <string name="menu_button_desc">Open Menu</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+</resources>
