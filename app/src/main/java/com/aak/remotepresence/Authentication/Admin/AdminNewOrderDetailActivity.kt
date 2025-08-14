@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.aak.remotepresence.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class AdminNewOrderDetailActivity : AppCompatActivity() {
 
@@ -62,8 +65,16 @@ class AdminNewOrderDetailActivity : AppCompatActivity() {
     }
 
     private fun updateOrderStatus(orderId: String, status: String) {
+        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault())
+        val currentTime = sdf.format(Date())
+
+        val updateData = hashMapOf(
+            "status" to status,
+            "formattedTime" to currentTime
+        )
+
         firestore.collection("tasks").document(orderId)
-            .update("status", status)
+            .update(updateData as Map<String, Any>)
             .addOnSuccessListener {
                 Toast.makeText(this, "Order marked as $status", Toast.LENGTH_SHORT).show()
                 finish()
@@ -73,12 +84,15 @@ class AdminNewOrderDetailActivity : AppCompatActivity() {
             }
     }
 
+
     private fun fetchOrderDetails(orderId: String) {
         firestore.collection("tasks").document(orderId).get()
             .addOnSuccessListener { doc ->
                 val userId = doc.getString("userId") ?: ""
                 val category = doc.getString("category") ?: ""
                 val detail = doc.getString("detail") ?: ""
+                val contact = doc.getString("contact") ?: ""
+
                 val instructions = doc.getString("instructions") ?: ""
                 val location = doc.getString("location") ?: ""
                 val status = doc.getString("status") ?: ""
@@ -88,6 +102,7 @@ class AdminNewOrderDetailActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.useridTextView).text = userId
                 findViewById<TextView>(R.id.categoryTextView).text = category
                 findViewById<TextView>(R.id.detailTextView).text = detail
+                findViewById<TextView>(R.id.contactTextView).text = contact
                 findViewById<TextView>(R.id.instructionsTextView).text = instructions
                 findViewById<TextView>(R.id.locationTextView).text = location
                 findViewById<TextView>(R.id.statusTxtView).text = status
@@ -162,12 +177,16 @@ class AdminNewOrderDetailActivity : AppCompatActivity() {
     }
 
     private fun markOrderAsComplete(orderId: String) {
+        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault())
+        val currentTime = sdf.format(Date())
+
         firestore.collection("tasks").document(orderId).get()
             .addOnSuccessListener { doc ->
                 if (doc.exists()) {
                     val userId = doc.getString("userId") ?: ""
                     val category = doc.getString("category") ?: ""
                     val detail = doc.getString("detail") ?: ""
+                    val contact = doc.getString("contact") ?: ""
                     val instructions = doc.getString("instructions") ?: ""
                     val urgency = doc.getString("urgency") ?: ""
                     val location = doc.getString("location") ?: ""
@@ -182,24 +201,35 @@ class AdminNewOrderDetailActivity : AppCompatActivity() {
                                 "username" to username,
                                 "category" to category,
                                 "detail" to detail,
+                                "contact" to contact,
                                 "instructions" to instructions,
                                 "urgency" to urgency,
                                 "location" to location,
                                 "mediaUri" to mediaUri,
-                                "status" to "Completed"
+                                "status" to "Completed",
+                                "formattedTime" to currentTime
                             )
 
+                            // yahan update ke jagah set() use karo
                             firestore.collection("completeOrders").document(orderId)
                                 .set(completeOrder)
                                 .addOnSuccessListener {
-                                    firestore.collection("tasks").document(orderId).delete()
+                                    firestore.collection("tasks").document(orderId)
+                                        .delete()
                                         .addOnSuccessListener {
                                             Toast.makeText(this, "Order marked as completed", Toast.LENGTH_SHORT).show()
                                             finish()
                                         }
+                                        .addOnFailureListener { e ->
+                                            Toast.makeText(this, "Failed to delete from tasks: ${e.message}", Toast.LENGTH_SHORT).show()
+                                        }
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(this, "Failed to save completed order: ${e.message}", Toast.LENGTH_SHORT).show()
                                 }
                         }
                 }
             }
     }
+
 }

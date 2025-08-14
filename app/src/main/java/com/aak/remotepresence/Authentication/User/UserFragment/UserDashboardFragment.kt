@@ -58,7 +58,6 @@ class UserDashboardFragment : Fragment() {
         userId = arguments?.getString("userId")
 
 
-        val logoutBtn = view.findViewById<ImageView>(R.id.sign_out_icon)
         newtask = view.findViewById(R.id.createTaskButton)
         viewAllTextView = view.findViewById(R.id.viewAllTasks)
         val whatsappBtn = view.findViewById<LinearLayout>(R.id.whatsappBtn)
@@ -144,30 +143,6 @@ class UserDashboardFragment : Fragment() {
         fetchRecentTasks()
         fetchAndShowNotification()
 
-
-
-
-
-
-        logoutBtn.setOnClickListener {
-            androidx.appcompat.app.AlertDialog.Builder(requireContext())
-                .setTitle("Logout")
-                .setMessage("Are you sure you want to logout?")
-                .setPositiveButton("Yes") { dialog, _ ->
-                    // Perform logout
-                    FirebaseAuth.getInstance().signOut()
-                    val intent = Intent(activity, LoginActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
-                    activity?.finish()
-                    dialog.dismiss()
-                }
-                .setNegativeButton("No") { dialog, _ ->
-                    dialog.dismiss() // Just dismiss the dialog
-                }
-                .setCancelable(false)
-                .show()
-        }
         if (userId != null) {
         } else {
             Log.e("UserDashboardFragment", "User ID is null")

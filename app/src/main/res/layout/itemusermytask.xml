@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/cardviewcolor"
+        android:background="@color/orange"
         android:padding="16dp">
         <LinearLayout
             android:id="@+id/titleStatusContainer"
@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:text="Category"
                 android:textSize="18sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:fontFamily="@font/poppinssemibold"/>
 
             <com.google.android.material.chip.Chip
@@ -64,7 +64,7 @@
                 android:text="Model Town"
                 android:fontFamily="@font/interregular"
                 android:textSize="14sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginStart="4dp"/>
         </LinearLayout>
 
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="12dp"
             android:gravity="center_vertical">
 
             <ImageView
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="3 days ago"
                 android:textSize="14sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:fontFamily="@font/interregular"
                 android:layout_marginStart="4dp"/>
         </LinearLayout>
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="16dp"
-            android:gravity="center">
+            android:gravity="end">
 
             <ImageView
                 android:id="@+id/ivChat"

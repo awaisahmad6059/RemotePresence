@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/cardviewcolor"
+        android:background="@color/orange"
         android:padding="16dp">
 
         <!-- Task Title and Status in same row -->
@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:text="Send birthday cake to mom"
                 android:textSize="18sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:fontFamily="@font/poppinssemibold" />
 
             <com.google.android.material.chip.Chip
@@ -68,8 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DHA Phase 5"
-                android:textColor="@color/white"
-                android:fontFamily="@font/interregular"
+                android:textColor="@color/black"
                 android:textSize="14sp"/>
 
             <View
@@ -91,8 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2 hours ago"
-                android:textColor="@color/white"
-                android:fontFamily="@font/interregular"
+                android:textColor="@color/black"
                 android:textSize="14sp"/>
         </LinearLayout>
     </LinearLayout>

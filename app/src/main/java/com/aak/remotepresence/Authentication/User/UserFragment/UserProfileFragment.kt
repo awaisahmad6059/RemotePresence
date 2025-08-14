@@ -1,4 +1,5 @@
 package com.aak.remotepresence.Authentication.User.UserFragment
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -10,6 +11,7 @@ import android.util.Base64
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.aak.remotepresence.Authentication.LoginActivity
 import com.aak.remotepresence.R
 import com.cloudinary.Cloudinary
 import com.cloudinary.utils.ObjectUtils
@@ -29,6 +31,7 @@ class UserProfileFragment : Fragment() {
     private lateinit var inProgressTasksCount: TextView
     private lateinit var pendingTasksCount: TextView
     private lateinit var helpSupportLayout: LinearLayout
+    private lateinit var signout: LinearLayout
     private lateinit var progressBar: ProgressBar
 
     private val uid = FirebaseAuth.getInstance().currentUser?.uid.orEmpty()
@@ -36,6 +39,7 @@ class UserProfileFragment : Fragment() {
     private val PICK_IMAGE_REQUEST = 1
     private var imageUri: Uri? = null
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +53,7 @@ class UserProfileFragment : Fragment() {
         inProgressTasksCount = view.findViewById(R.id.inProgressTasksCount)
         pendingTasksCount = view.findViewById(R.id.pendingTasksCount)
         helpSupportLayout = view.findViewById(R.id.helpSupportLayout)
+        signout = view.findViewById(R.id.signoutlayout)
         progressBar = view.findViewById(R.id.profileUploadProgressBar) // Add in XML
 
 
@@ -65,6 +70,25 @@ class UserProfileFragment : Fragment() {
                 .replace(R.id.fragment_container, UserAboutFragment())
                 .addToBackStack(null)
                 .commit()
+        }
+        signout.setOnClickListener{
+            androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to logout?")
+                .setPositiveButton("Yes") { dialog, _ ->
+                    // Perform logout
+                    FirebaseAuth.getInstance().signOut()
+                    val intent = Intent(activity, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    activity?.finish()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss() // Just dismiss the dialog
+                }
+                .setCancelable(false)
+                .show()
         }
 
         return view
@@ -104,9 +128,9 @@ class UserProfileFragment : Fragment() {
 
         val cloudinary = Cloudinary(
             ObjectUtils.asMap(
-                "cloud_name", "dewmsg60s",
-                "api_key", "519592195627748",
-                "api_secret", "v3_yR4o1MA9w4XOxCBfc9u7WfdE"
+                "cloud_name", "drrnuzimv",
+                "api_key", "152551543694778",
+                "api_secret", "1Qlsn2IE7YebOM6AN1nMv_6H7mc"
             )
         )
 

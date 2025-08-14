@@ -14,39 +14,16 @@
         android:background="@color/background"
         android:padding="16dp">
 
-        <!-- Header: App Name and Logo -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-            <ImageView
-                android:id="@+id/sign_out_icon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginStart="-8dp"
-                android:src="@drawable/power"
-                android:contentDescription="Sign Out"
-                android:padding="4dp" />
-
-            <TextView
-                android:id="@+id/appName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:fontFamily="@font/poppinssemibold"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:textColor="#000000" />
 
 
             <ImageView
                 android:id="@+id/logoImage"
-                android:layout_width="50dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:src="@drawable/logo" />
 
@@ -54,6 +31,58 @@
         </LinearLayout>
 
         <!-- Be There Without Being There Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:orientation="vertical"
+                android:background="@drawable/userdahboardborder"
+                android:padding="0dp">
+
+                <TextView
+                    android:id="@+id/mainTagline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="YOU REST. WE RUN"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/Bluenew"
+                    android:fontFamily="@font/introrust"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/subTagline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="24dp"
+                    android:text="Your trusted hands and \nheart in Lahore"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/interregular"
+                    android:layout_marginTop="2dp" />
+
+                <Button
+                    android:id="@+id/createTaskButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create New Order"
+                    android:fontFamily="@font/interregular"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="24dp"
+                    android:backgroundTint="@color/btncolor"
+                    android:textColor="@color/Bluenew" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,60 +94,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp"
-                android:background="@drawable/bg_gradient">
+                android:padding="0dp"
+                android:background="@drawable/userdashaboardwhiteboarde">
 
                 <TextView
-                    android:id="@+id/mainTagline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Be There Without Being There"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/interregular"
-                    android:textSize="18sp"
+                    android:text="AP LAHORE K BAHIR HAN\n LAKIN KAM YAHAN HA?"
+                    android:textColor="@color/orange"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="22sp"
+                    android:layout_marginLeft="24dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/subTagline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Your trusted hands and heart in Lahore"
-                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="24dp"
+                    android:text="Ap Chahy kisi B City Sa Han.\n Lahore Ma Personal Ya Kisi B Trh Ka\nLegal Work Hai. Wo Ham Sy Krwaein"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/interregular"
                     android:layout_marginTop="4dp" />
-
-                <Button
-                    android:id="@+id/createTaskButton"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Create New Task"
-                    android:fontFamily="@font/interregular"
-                    android:layout_marginTop="12dp"
-                    android:backgroundTint="@color/btncolor"
-                    android:textColor="@color/white" />
+                    android:textSize="25dp"
+                    android:layout_marginLeft="24dp"
+                    android:text="Wo B Bina Yhan Aye"
+                    android:textColor="@color/orange"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:layout_marginTop="4dp" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <!-- Help Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120dp"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:padding="16dp"
+                android:background="@drawable/userdahboardborder"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Need Help? Contact Us"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/poppinssemibold"
-                    android:textSize="16sp" />
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -137,18 +170,13 @@
                         android:gravity="center"
                         android:background="@drawable/helpbtnwhatsapp">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/chat"
-                            android:backgroundTint="@color/white"
-                            android:layout_marginEnd="8dp" />
-
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="160dp"
                             android:layout_height="wrap_content"
-                            android:text="Order On \nWhatsApp"
-                            android:textColor="@color/white"
+                            android:text="Order On WhatsApp"
+                            android:textColor="@color/Bluenew"
+                            android:textSize="11sp"
+                            android:gravity="center"
                             android:fontFamily="@font/poppinssemibold" />
                     </LinearLayout>
 
@@ -164,20 +192,15 @@
                         android:orientation="horizontal"
                         android:padding="10dp"
                         android:gravity="center"
-                        android:background="@drawable/helpbtncall">
+                        android:background="@drawable/helpbtnwhatsapp">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/call"
-                            android:backgroundTint="@color/white"
-                            android:layout_marginEnd="8dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Order On \n    Call"
-                            android:textColor="@color/white"
+                            android:text="Order On Call"
+                            android:textColor="@color/Bluenew"
+                            android:textSize="14sp"
                             android:fontFamily="@font/poppinssemibold" />
                     </LinearLayout>
                 </LinearLayout>
@@ -190,7 +213,7 @@
             android:layout_height="wrap_content"
             android:text="What can we do for you?"
             android:fontFamily="@font/poppinssemibold"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp" />
 
@@ -221,6 +244,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp"
+                    android:background="@drawable/border"
                     android:gravity="center">
 
                     <ImageView
@@ -231,21 +255,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gifts and Surprises"
+                        android:text="Gifts and \nSurprises"
                         android:fontFamily="@font/poppinssemibold"
                         android:gravity="center"
                         android:textSize="14sp"
                         android:layout_marginTop="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Flowers, cakes,\n gifts"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/interregular"
-                        android:textColor="#666666"
-                        android:gravity="center"
-                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -261,9 +276,10 @@
                 <LinearLayout
                     android:id="@+id/shopping"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="125dp"
                     android:orientation="vertical"
                     android:padding="16dp"
+                    android:background="@drawable/border"
                     android:gravity="center">
 
                     <ImageView
@@ -279,15 +295,6 @@
                         android:textSize="14sp"
                         android:layout_marginTop="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Buy anything from local \nshop"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/interregular"
-                        android:textColor="#666666"
-                        android:gravity="center"
-                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -305,6 +312,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:background="@drawable/border"
                     android:padding="16dp"
                     android:gravity="center">
 
@@ -321,15 +329,6 @@
                         android:textSize="14sp"
                         android:layout_marginTop="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Urgent Medicine Delivery"
-                        android:textSize="12sp"
-                        android:textColor="#666666"
-                        android:fontFamily="@font/interregular"
-                        android:gravity="center"
-                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -347,6 +346,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:background="@drawable/border"
                     android:padding="16dp"
                     android:gravity="center">
 
@@ -363,15 +363,6 @@
                         android:textSize="14sp"
                         android:layout_marginTop="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Check on friends, Family"
-                        android:textSize="12sp"
-                        android:textColor="#666666"
-                        android:fontFamily="@font/interregular"
-                        android:gravity="center"
-                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -390,6 +381,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp"
+                    android:background="@drawable/border"
                     android:gravity="center">
 
                     <ImageView
@@ -405,15 +397,6 @@
                         android:textSize="14sp"
                         android:layout_marginTop="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Paper works, picup,\ndrops"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/interregular"
-                        android:textColor="#666666"
-                        android:gravity="center"
-                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -432,30 +415,22 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp"
+                    android:background="@drawable/border"
                     android:gravity="center">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/customrequest" />
+                        android:src="@drawable/doc" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Custom Request"
                         android:fontFamily="@font/poppinssemibold"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:layout_marginTop="8dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Anything else you \n need"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/interregular"
-                        android:textColor="#666666"
-                        android:gravity="center"
-                        android:layout_marginTop="2dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

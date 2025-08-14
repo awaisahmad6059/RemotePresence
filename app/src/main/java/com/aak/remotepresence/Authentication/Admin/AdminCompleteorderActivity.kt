@@ -67,6 +67,7 @@ class AdminCompleteorderActivity : AppCompatActivity() {
         intent.putExtra("userId", order.userId)
         intent.putExtra("category", order.category)
         intent.putExtra("description", order.detail)
+        intent.putExtra("contact", order.contact)
         intent.putExtra("instructions", order.instructions)
         intent.putExtra("location", order.location)
         intent.putExtra("urgency", order.urgency)
@@ -88,6 +89,7 @@ class AdminCompleteorderActivity : AppCompatActivity() {
                         userId = doc.getString("userId") ?: "",
                         category = doc.getString("category") ?: "",
                         detail = doc.getString("detail") ?: "",
+                        contact = doc.getString("contact") ?: "",
                         instructions = doc.getString("instructions") ?: "",
                         location = doc.getString("location") ?: "",
                         urgency = doc.getString("urgency") ?: "",

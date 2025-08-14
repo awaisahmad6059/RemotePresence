@@ -243,7 +243,7 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/customrequest" />
+                        android:src="@drawable/doc" />
 
                     <TextView
                         android:id="@+id/customLabel"
@@ -276,6 +276,26 @@
             android:fontFamily="@font/interregular"
             android:hint="e.g., Send birthday cake to my mom"
             android:padding="12dp"
+            android:background="@drawable/edittext_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Phone Number"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppinssemibold" />
+
+        <EditText
+            android:id="@+id/contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/interregular"
+            android:hint="Enter Phone Number For Contact"
+            android:padding="12dp"
+            android:inputType="phone"
             android:background="@drawable/edittext_background" />
 
         <!-- Details & Instructions Section -->
@@ -372,7 +392,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Within 3 days"
+                        android:text="2 To 3 days"
                         android:fontFamily="@font/interregular"
                         android:textColor="#666666"
                         android:textSize="12sp" />
@@ -413,7 +433,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Within 1 day"
+                        android:text="1 To 2 days"
                         android:fontFamily="@font/interregular"
                         android:textColor="#666666"
                         android:textSize="12sp" />
@@ -453,7 +473,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Within 3 hours"
+                        android:text="1 Day"
                         android:fontFamily="@font/interregular"
                         android:textColor="#666666"
                         android:textSize="12sp" />

@@ -78,10 +78,33 @@
             android:fontFamily="@font/interregular"
             android:layout_marginTop="10dp"/>
         <TextView
-            android:id="@+id/categoryLabel"
+            android:id="@+id/contactdLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/useridTextView"
+            android:layout_marginTop="8dp"
+            android:text="User Phone Number"
+            android:fontFamily="@font/poppinssemibold"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/contactTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contactdLabel"
+            android:background="@drawable/rounded_corner_background"
+            android:padding="10dp"
+            android:text="Contact"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/interregular"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/categoryLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contactTextView"
             android:layout_marginTop="8dp"
             android:text="Category"
             android:fontFamily="@font/poppinssemibold"

@@ -151,9 +151,9 @@ class SignUpActivity : AppCompatActivity() {
 
         val cloudinary = Cloudinary(
             ObjectUtils.asMap(
-                "cloud_name", "dewmsg60s",
-                "api_key", "519592195627748",
-                "api_secret", "v3_yR4o1MA9w4XOxCBfc9u7WfdE"
+                "cloud_name", "drrnuzimv",
+                "api_key", "152551543694778",
+                "api_secret", "1Qlsn2IE7YebOM6AN1nMv_6H7mc"
             )
         )
 

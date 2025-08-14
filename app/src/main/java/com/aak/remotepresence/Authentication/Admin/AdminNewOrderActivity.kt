@@ -81,6 +81,7 @@ class AdminNewOrderActivity : AppCompatActivity() {
                         userId = doc.getString("userId") ?: "",
                         category = doc.getString("category") ?: "",
                         detail = doc.getString("detail") ?: "",
+                        contact = doc.getString("contact") ?: "",
                         instructions = doc.getString("instructions") ?: "",
                         location = doc.getString("location") ?: "",
                         urgency = doc.getString("urgency") ?: "",

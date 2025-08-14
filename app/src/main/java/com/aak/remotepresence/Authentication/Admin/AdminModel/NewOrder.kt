@@ -5,6 +5,7 @@ data class NewOrder(
     val userId: String = "",
     val category: String = "",
     val detail: String = "",
+    val contact: String = "",
     val instructions: String = "",
     val location: String = "",
     val urgency: String = "",

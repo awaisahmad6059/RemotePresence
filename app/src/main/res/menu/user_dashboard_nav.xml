@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/mytask"
-        android:icon="@drawable/chat"
+        android:icon="@drawable/history"
         android:title="My TAsks" />
 
     <item

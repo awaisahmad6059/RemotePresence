@@ -42,6 +42,7 @@ class UserCreateNewTaskFragment : Fragment() {
 
 
     private lateinit var detailEt: EditText
+    private lateinit var contact: EditText
     private lateinit var descEt: EditText
     private lateinit var locationEt: EditText
     private lateinit var submitBtn: Button
@@ -70,6 +71,7 @@ class UserCreateNewTaskFragment : Fragment() {
 
         detailEt = view.findViewById(R.id.detail)
         descEt = view.findViewById(R.id.editdesc)
+        contact = view.findViewById(R.id.contact)
         locationEt = view.findViewById(R.id.editlocation)
         submitBtn = view.findViewById(R.id.submitTaskButton)
         addMediaLayout = view.findViewById(R.id.addmedia)
@@ -179,10 +181,11 @@ class UserCreateNewTaskFragment : Fragment() {
 
     private fun submitTask() {
         val detail = detailEt.text.toString().trim()
+        val contact = contact.text.toString().trim()
         val desc = descEt.text.toString().trim()
         val location = locationEt.text.toString().trim()
 
-        if (selectedCategory.isEmpty() || selectedUrgency.isEmpty() || detail.isEmpty() || desc.isEmpty() || location.isEmpty()) {
+        if (selectedCategory.isEmpty() || selectedUrgency.isEmpty() || detail.isEmpty() ||contact.isEmpty() || desc.isEmpty() || location.isEmpty()) {
             Toast.makeText(requireContext(), "Please fill all fields and select options.", Toast.LENGTH_SHORT).show()
             return
         }
@@ -205,6 +208,7 @@ class UserCreateNewTaskFragment : Fragment() {
                     "username" to username,
                     "category" to selectedCategory,
                     "detail" to detail,
+                    "contact" to contact,
                     "instructions" to desc,
                     "location" to location,
                     "urgency" to selectedUrgency,
@@ -241,9 +245,9 @@ class UserCreateNewTaskFragment : Fragment() {
     private fun uploadImageToCloudinary(uri: Uri): String? {
         val cloudinary = Cloudinary(
             ObjectUtils.asMap(
-                "cloud_name", "dewmsg60s",
-                "api_key", "519592195627748",
-                "api_secret", "v3_yR4o1MA9w4XOxCBfc9u7WfdE"
+                "cloud_name", "drrnuzimv",
+                "api_key", "152551543694778",
+                "api_secret", "1Qlsn2IE7YebOM6AN1nMv_6H7mc"
             )
         )
 

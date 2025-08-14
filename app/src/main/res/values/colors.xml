@@ -15,8 +15,11 @@
     <color name="colorAccent">#00796B</color>
     <color name="SkyBlue">#B7F2E3</color>
     <color name="SkyDarkBlue">#77B0AA</color>
+    <color name="orange">#FF5722</color>
+    <color name="Bluenew">#113245</color>
+
     <color name="cardviewcolor">#113245</color>
-    <color name="btncolor">#00a94b</color>
+    <color name="btncolor">#25D366</color>
     <color name="DarkBlue">#23262F</color>
     <color name="ButtonBlue">#2784E6</color>
     <color name="light_blue_A700">#007aff</color>
@@ -24,14 +27,15 @@
     <color name="WelcomeScreen">#040519</color>
     <color name="gradient_midpoint">#6671F8</color>
     <color name="dashboardbackground">#F2F4FA</color>
-    <color name="card_selected">#4CAF50</color>           <!-- CardView green -->
+    <color name="card_selected">#E3F2FD</color>           <!-- CardView green -->
     <color name="card_selected_inner">#A5D6A7</color>     <!-- Inner layout light green -->
     <color name="card_default">#FFFFFF</color>            <!-- CardView default -->
     <color name="card_inner_default">#F5F5F5</color>      <!-- Inner layout default -->
-    <color name="status_pending">#FFA000</color> <!-- Amber -->
+    <color name="status_pending">#FFC107</color> <!-- Amber -->
     <color name="status_in_progress">#2196F3</color> <!-- Blue -->
-    <color name="status_completed">#4CAF50</color> <!-- Green -->
+    <color name="status_completed">#00a94b</color> <!-- Green -->
     <color name="status_default">#9E9E9E</color> <!-- Gray -->
+    <color name="newwhite">#f1faff</color> <!-- Gray -->
 
 
 
