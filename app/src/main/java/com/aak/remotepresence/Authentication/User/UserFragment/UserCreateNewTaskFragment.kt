@@ -185,7 +185,7 @@ class UserCreateNewTaskFragment : Fragment() {
         val desc = descEt.text.toString().trim()
         val location = locationEt.text.toString().trim()
 
-        if (selectedCategory.isEmpty() || selectedUrgency.isEmpty() || detail.isEmpty() ||contact.isEmpty() || desc.isEmpty() || location.isEmpty()) {
+        if (selectedCategory.isEmpty() || detail.isEmpty() ||contact.isEmpty() || desc.isEmpty() || location.isEmpty()) {
             Toast.makeText(requireContext(), "Please fill all fields and select options.", Toast.LENGTH_SHORT).show()
             return
         }

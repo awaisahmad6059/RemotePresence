@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     android:padding="16dp">
 
     <EditText
@@ -9,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/interregular"
+        android:textColor="@color/black"
         android:hint="Title" />
 
     <EditText
@@ -17,6 +19,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/interregular"
         android:hint="Description"
+        android:textColor="@color/black"
         android:minLines="4"/>
 
     <Button

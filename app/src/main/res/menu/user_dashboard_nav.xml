@@ -9,7 +9,7 @@
     <item
         android:id="@+id/mytask"
         android:icon="@drawable/history"
-        android:title="My TAsks" />
+        android:title="My Tasks" />
 
     <item
         android:id="@+id/newtask"

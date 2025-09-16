@@ -14,8 +14,8 @@ android {
         applicationId = "com.aak.remotepresence"
         minSdk = 23
         targetSdk = 36
-        versionCode = 6
-        versionName = "1.5"
+        versionCode = 11
+        versionName = "2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -71,4 +71,6 @@ dependencies {
     implementation(libs.glide)
     add("kapt", "com.github.bumptech.glide:compiler:4.16.0")
     implementation(libs.picasso)
+    implementation("com.facebook.soloader:soloader:0.10.4")
+
 }

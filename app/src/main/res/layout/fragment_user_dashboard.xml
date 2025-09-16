@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="25dp"
                     android:layout_marginLeft="24dp"
-                    android:text="Wo B Bina Yhan Aye"
+                    android:text="Wo B Bina Lahore Aye"
                     android:textColor="@color/orange"
                     android:fontFamily="@font/poppinssemibold"
                     android:layout_marginTop="4dp" />
@@ -132,14 +132,14 @@
         <!-- Help Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="150dp"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="150dp"
                 android:padding="16dp"
                 android:background="@drawable/userdahboardborder"
                 android:orientation="vertical">
@@ -173,9 +173,9 @@
                         <TextView
                             android:layout_width="160dp"
                             android:layout_height="wrap_content"
-                            android:text="Order On WhatsApp"
+                            android:text="Order On \nWhatsApp"
                             android:textColor="@color/Bluenew"
-                            android:textSize="11sp"
+                            android:textSize="14sp"
                             android:gravity="center"
                             android:fontFamily="@font/poppinssemibold" />
                     </LinearLayout>
@@ -198,7 +198,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Order On Call"
+                            android:text="Order On \nCall"
                             android:textColor="@color/Bluenew"
                             android:textSize="14sp"
                             android:fontFamily="@font/poppinssemibold" />

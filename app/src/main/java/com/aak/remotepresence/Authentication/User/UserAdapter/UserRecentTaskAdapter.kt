@@ -31,7 +31,7 @@ class UserRecentTaskAdapter(
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = taskList[position]
-        holder.taskTitle.text = task.detail
+        holder.taskTitle.text = task.category
         holder.location.text = task.location
         holder.statusChip.text = task.status
         holder.time.text = task.formattedTime

@@ -182,24 +182,30 @@ class UserDashboardFragment : Fragment() {
         val layout = LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(48, 40, 48, 24)
+            setBackgroundColor(Color.WHITE) // ✅ Background white
         }
 
         val titleView = TextView(context).apply {
             text = title
             textSize = 20f
             setTypeface(null, Typeface.BOLD)
-            setTextColor(Color.BLACK)
+            setTextColor(Color.BLACK) // ✅ Title text black
         }
 
         val descView = TextView(context).apply {
             text = description
             textSize = 16f
-            setTextColor(Color.DKGRAY)
+            setTextColor(Color.BLACK) // ✅ Description text black
             setPadding(0, 20, 0, 20)
         }
 
         val closeButton = Button(context).apply {
             text = "Close"
+            // ✅ Button ka text black aur background white
+            // (lekin aap chahe to Material style bhi use kar sakte ho)
+            setBackgroundColor(Color.WHITE)
+            setTextColor(Color.BLACK)
+
             setOnClickListener {
                 // Save close status in Firestore
                 userId?.let { uid ->
@@ -216,7 +222,9 @@ class UserDashboardFragment : Fragment() {
             }
         }
 
-        layout.addView(titleView)
+
+
+    layout.addView(titleView)
         layout.addView(descView)
         layout.addView(closeButton)
 

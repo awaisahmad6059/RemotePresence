@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
-            app:cardBackgroundColor="#6AAB8C94"
+            app:cardBackgroundColor="#EDF6FF"
             android:layout_marginBottom="16dp">
 
             <LinearLayout
@@ -170,6 +170,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp"
+            app:cardBackgroundColor="#EDF6FF"
             android:layout_marginBottom="16dp">
 
             <LinearLayout

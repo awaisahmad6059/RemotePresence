@@ -28,6 +28,13 @@ class UserAdapter(private val users: List<User>) : RecyclerView.Adapter<UserAdap
         val user = users[position]
         holder.name.text = user.username
         holder.role.text = user.userType
-        Picasso.get().load(user.profileImageUrl).placeholder(R.drawable.account_24).into(holder.image)
-    }
+        if (!user.profileImageUrl.isNullOrEmpty()) {
+            Picasso.get()
+                .load(user.profileImageUrl)
+                .placeholder(R.drawable.account_24)
+                .error(R.drawable.account_24)
+                .into(holder.image)
+        } else {
+            holder.image.setImageResource(R.drawable.account_24)
+        }    }
 }
