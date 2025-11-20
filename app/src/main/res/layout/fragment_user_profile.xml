@@ -1,285 +1,322 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="#FFFFFF">
 
+    <!-- Static Header Section -->
     <LinearLayout
-        android:id="@+id/profileContainer"
+        android:id="@+id/profileHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:background="@drawable/top_header_gradient"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:elevation="6dp"
+        android:gravity="center">
 
-        <!-- Profile Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textColor="@color/Bluenew"
+            android:textSize="22sp"
+            android:fontFamily="@font/popins" />
+
+        <View
+            android:id="@+id/profileDivider"
+            android:layout_width="60dp"
+            android:layout_height="3dp"
+            android:background="#80FFFFFF"
+            android:layout_marginTop="6dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/profileHeader"
+        android:fillViewport="true">
+
         <LinearLayout
-            android:id="@+id/profileSection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/background"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="24dp">
+            android:padding="16dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImage"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/account_24"
-                android:layout_marginTop="10dp"
-                app:civ_border_color="@color/cardviewcolor"
-                app:civ_border_width="2dp" />
-            <Button
-                android:id="@+id/btn_change_picture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="change Picture"
-                android:fontFamily="@font/interregular"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="@color/btncolor"
-                android:textColor="@color/white"
-                android:padding="8dp" />
-
-
-            <TextView
-                android:id="@+id/userName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/poppinssemibold"/>
-            <ProgressBar
-                android:id="@+id/profileUploadProgressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_gravity="center"
-                style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
-                />
-
-
-        </LinearLayout>
-
-        <!-- Task Stats Section -->
-        <LinearLayout
-            android:id="@+id/taskStatsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="24dp"
-            android:weightSum="3">
-
-            <!-- Completed Tasks -->
+            <!-- Profile Section -->
             <LinearLayout
-                android:id="@+id/completedTasksBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/rounded_box"
-                android:padding="12dp">
-
-                <TextView
-                    android:id="@+id/completedTasksCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/poppinssemibold"/>
-
-                <TextView
-                    android:id="@+id/completedTasksLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tasks Done"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/interregular"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <!-- In Progress Tasks -->
-            <LinearLayout
-                android:id="@+id/inProgressTasksBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/rounded_box"
-                android:padding="12dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp">
-
-                <TextView
-                    android:id="@+id/inProgressTasksCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/poppinssemibold"/>
-
-                <TextView
-                    android:id="@+id/inProgressTasksLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="In Progress"
-                    android:fontFamily="@font/interregular"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-
-            <!-- Pending Tasks -->
-            <LinearLayout
-                android:id="@+id/pendingTasksBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/rounded_box"
-                android:padding="12dp">
-
-                <TextView
-                    android:id="@+id/pendingTasksCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/poppinssemibold"/>
-
-                <TextView
-                    android:id="@+id/pendingTasksLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pending"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/interregular"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Bottom Cards Section -->
-        <LinearLayout
-            android:id="@+id/bottomCardsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Help & Support Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/helpSupportCard"
+                android:id="@+id/profileSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="24dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                android:background="@drawable/profile_header_bg">
 
-                <LinearLayout
-                    android:id="@+id/helpSupportLayout"
-                    android:layout_width="match_parent"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/account_24"
+                    android:layout_marginTop="4dp"
+                    app:civ_border_color="@color/cardviewcolor"
+                    app:civ_border_width="3dp" />
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/border"
-                    android:padding="16dp">
+                    android:layout_marginTop="12dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppinssemibold" />
 
-                    <ImageView
-                        android:id="@+id/helpSupportIcon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/question" />
+                <ProgressBar
+                    android:id="@+id/profileUploadProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large" />
 
-                    <TextView
-                        android:id="@+id/helpSupportText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Help &amp; Support"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/interregular"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="16dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                <Button
+                    android:id="@+id/btn_change_picture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="@color/btncolor"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:paddingLeft="18dp"
+                    android:paddingRight="18dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Change Image"
+                    android:textColor="@color/black" />
+            </LinearLayout>
 
-            <!-- Rate Us Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/rateUsCard"
+            <!-- Task Stats Section -->
+            <LinearLayout
+                android:id="@+id/taskStatsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp"
+                android:weightSum="3">
 
+                <!-- Completed Tasks -->
                 <LinearLayout
-                    android:id="@+id/rateUsLayout"
-                    android:layout_width="match_parent"
+                    android:id="@+id/completedTasksBox"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/border"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/rateUsIcon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/star" />
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_box"
+                    android:padding="12dp">
 
                     <TextView
-                        android:id="@+id/rateUsText"
+                        android:id="@+id/completedTasksCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rate Us"
-                        android:fontFamily="@font/interregular"
-                        android:textSize="16sp"
+                        android:text="0"
+                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:layout_marginLeft="16dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:fontFamily="@font/poppinssemibold"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/signout"
+                    <TextView
+                        android:id="@+id/completedTasksLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Tasks Done"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- In Progress Tasks -->
+                <LinearLayout
+                    android:id="@+id/inProgressTasksBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_box"
+                    android:padding="12dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp">
+
+                    <TextView
+                        android:id="@+id/inProgressTasksCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppinssemibold"/>
+
+                    <TextView
+                        android:id="@+id/inProgressTasksLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif"
+                        android:text="In Progress"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Pending Tasks -->
+                <LinearLayout
+                    android:id="@+id/pendingTasksBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/rounded_box"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/pendingTasksCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppinssemibold"/>
+
+                    <TextView
+                        android:id="@+id/pendingTasksLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Pending"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Bottom Cards Section -->
+            <LinearLayout
+                android:id="@+id/bottomCardsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                android:layout_marginTop="10dp"
-                app:cardElevation="4dp">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/signoutlayout"
+                <!-- Help & Support Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/helpSupportCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
 
-
-                    <ImageView
-                        android:id="@+id/powerIcon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/power" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/helpSupportLayout"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Sign Out"
-                        android:fontFamily="@font/interregular"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:layout_marginLeft="16dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:orientation="horizontal"
+                        android:background="@drawable/border"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/helpSupportIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/question" />
+
+                        <TextView
+                            android:id="@+id/helpSupportText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="sans-serif"
+                            android:text="Help &amp; Support"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Rate Us Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/rateUsCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:id="@+id/rateUsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/border"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/rateUsIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/star" />
+
+                        <TextView
+                            android:id="@+id/rateUsText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="sans-serif"
+                            android:text="Rate Us"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/signout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginTop="10dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:id="@+id/signoutlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+
+                        <ImageView
+                            android:id="@+id/powerIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/power" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="sans-serif"
+                            android:text="Sign Out"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>

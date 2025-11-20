@@ -5,24 +5,32 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
+import android.view.GestureDetector
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.FrameLayout
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.core.view.GestureDetectorCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.aak.remotepresence.Authentication.LoginActivity
 import com.aak.remotepresence.Authentication.User.UserAdapter.UserRecentTaskAdapter
 import com.aak.remotepresence.Authentication.User.UserModel.UserRecentTask
 import com.aak.remotepresence.R
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import kotlin.math.abs
 
 class UserDashboardFragment : Fragment() {
     private var userId: String? = null
@@ -40,7 +48,17 @@ class UserDashboardFragment : Fragment() {
     private lateinit var customreqLayout: LinearLayout
     private var alertDialog: AlertDialog? = null
 
+    // Carousel state
+    private var currentCardIndex = 0
+    private lateinit var carouselCards: List<LinearLayout>
+    private lateinit var carouselDots: List<View>
+    private lateinit var carouselContentContainer: FrameLayout
+    private lateinit var gestureDetector: GestureDetectorCompat
+    private lateinit var carouselCardView: CardView
+    private lateinit var carouselColors: IntArray
 
+    // Filter state
+    private var currentStatusFilter = "pending"
 
 
 
@@ -70,6 +88,11 @@ class UserDashboardFragment : Fragment() {
         personalVisitLayout = view.findViewById(R.id.personalvisit)
         docLayout = view.findViewById(R.id.doc)
         customreqLayout = view.findViewById(R.id.customreq)
+
+        // Initialize Carousel
+        setupCarousel(view)
+
+
 
         val layouts = listOf(giftLayout, shoppingLayout, medicineLayout, personalVisitLayout, docLayout, customreqLayout)
 
@@ -151,6 +174,121 @@ class UserDashboardFragment : Fragment() {
         return view
     }
 
+    private fun setupCarousel(view: View) {
+        val leftArrow = view.findViewById<ImageButton>(R.id.leftArrow)
+        val rightArrow = view.findViewById<ImageButton>(R.id.rightArrow)
+        carouselContentContainer = view.findViewById(R.id.carousel_content_container)
+        carouselCardView = view.findViewById(R.id.carouselCardView)
+
+        carouselColors = intArrayOf(
+            ContextCompat.getColor(requireContext(), R.color.carousel_color_1),
+            ContextCompat.getColor(requireContext(), R.color.carousel_color_2),
+            ContextCompat.getColor(requireContext(), R.color.carousel_color_3)
+        )
+
+        carouselCards = listOf(
+            view.findViewById(R.id.carouselCard1),
+            view.findViewById(R.id.carouselCard2),
+            view.findViewById(R.id.carouselCard3)
+        )
+
+        carouselDots = listOf(
+            view.findViewById(R.id.dot1),
+            view.findViewById(R.id.dot2),
+            view.findViewById(R.id.dot3)
+        )
+
+        leftArrow.setOnClickListener {
+            animateCarousel(isNext = false)
+        }
+
+        rightArrow.setOnClickListener {
+            animateCarousel(isNext = true)
+        }
+
+        // Setup swipe gesture detector
+        val gestureListener = object : GestureDetector.SimpleOnGestureListener() {
+            private val SWIPE_THRESHOLD = 100
+            private val SWIPE_VELOCITY_THRESHOLD = 100
+
+            override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+                if (e1 == null) return false
+                val diffX = e2.x - e1.x
+                if (abs(diffX) > SWIPE_THRESHOLD && abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                    if (diffX > 0) {
+                        // Swipe Right
+                        animateCarousel(isNext = false)
+                    } else {
+                        // Swipe Left
+                        animateCarousel(isNext = true)
+                    }
+                    return true
+                }
+                return false
+            }
+        }
+
+        gestureDetector = GestureDetectorCompat(requireContext(), gestureListener)
+        carouselContentContainer.setOnTouchListener { _, event ->
+            gestureDetector.onTouchEvent(event)
+            true
+        }
+
+        updateCarousel(false)
+    }
+
+    private fun animateCarousel(isNext: Boolean) {
+        val oldIndex = currentCardIndex
+        currentCardIndex = if (isNext) {
+            (currentCardIndex + 1) % carouselCards.size
+        } else {
+            (currentCardIndex - 1 + carouselCards.size) % carouselCards.size
+        }
+
+        val cardOut = carouselCards[oldIndex]
+        val cardIn = carouselCards[currentCardIndex]
+
+        val slideOut = if (isNext) {
+            AnimationUtils.loadAnimation(context, R.anim.slide_out_left)
+        } else {
+            AnimationUtils.loadAnimation(context, R.anim.slide_out_right)
+        }
+
+        val slideIn = if (isNext) {
+            AnimationUtils.loadAnimation(context, R.anim.slide_in_right)
+        } else {
+            AnimationUtils.loadAnimation(context, R.anim.slide_in_left)
+        }
+
+        slideOut.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation?) {}
+            override fun onAnimationEnd(animation: Animation?) {
+                cardOut.visibility = View.GONE
+            }
+            override fun onAnimationRepeat(animation: Animation?) {}
+        })
+
+        cardOut.startAnimation(slideOut)
+        cardIn.visibility = View.VISIBLE
+        cardIn.startAnimation(slideIn)
+
+        updateCarousel(true)
+    }
+
+
+    private fun updateCarousel(animated: Boolean) {
+        carouselCardView.setCardBackgroundColor(carouselColors[currentCardIndex])
+        updateCarouselDots()
+    }
+
+
+    private fun updateCarouselDots() {
+        carouselDots.forEachIndexed { index, dot ->
+            val drawableId = if (index == currentCardIndex) R.drawable.dot_selected else R.drawable.dot_unselected
+            dot.background = ContextCompat.getDrawable(requireContext(), drawableId)
+        }
+    }
+
     private fun fetchAndShowNotification() {
         userId?.let { uid ->
             val db = FirebaseFirestore.getInstance()
@@ -224,7 +362,7 @@ class UserDashboardFragment : Fragment() {
 
 
 
-    layout.addView(titleView)
+        layout.addView(titleView)
         layout.addView(descView)
         layout.addView(closeButton)
 
@@ -274,13 +412,13 @@ class UserDashboardFragment : Fragment() {
         userId?.let { uid ->
             firestore.collection("tasks")
                 .whereEqualTo("userId", uid)
-                .whereEqualTo("status", "pending")
+                .whereEqualTo("status", currentStatusFilter)
                 .limit(3)
                 .get()
                 .addOnSuccessListener { documents ->
                     taskList.clear()
                     if (documents.isEmpty) {
-                        Log.d("UserDashboard", "No tasks found for user $uid")
+                        Log.d("UserDashboard", "No tasks found for user $uid with status $currentStatusFilter")
                     }
                     for (doc in documents) {
                         Log.d("UserDashboard", "Found task: ${doc.data}")

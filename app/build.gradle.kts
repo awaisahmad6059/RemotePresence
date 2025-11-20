@@ -71,6 +71,5 @@ dependencies {
     implementation(libs.glide)
     add("kapt", "com.github.bumptech.glide:compiler:4.16.0")
     implementation(libs.picasso)
-    implementation("com.facebook.soloader:soloader:0.10.4")
 
 }

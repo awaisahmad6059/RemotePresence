@@ -17,9 +17,13 @@
     <color name="SkyDarkBlue">#77B0AA</color>
     <color name="orange">#FF5722</color>
     <color name="Bluenew">#113245</color>
+    <color name="orangecard">#FF5722</color>
+    <color name="borderline">#FF5722</color>
 
     <color name="cardviewcolor">#113245</color>
-    <color name="btncolor">#25D366</color>
+    <color name="btncolor">#36C715</color>
+    <color name="iconcolor">#36C715</color>
+    <color name="filter_green">#36C715</color>
     <color name="DarkBlue">#23262F</color>
     <color name="ButtonBlue">#2784E6</color>
     <color name="light_blue_A700">#007aff</color>
@@ -38,5 +42,9 @@
     <color name="newwhite">#f1faff</color> <!-- Gray -->
 
 
+    <!-- Carousel Colors -->
+    <color name="carousel_color_1">#FF5722</color> <!-- Orange -->
+    <color name="carousel_color_2">#36C715</color> <!-- Green -->
+    <color name="carousel_color_3">#AAD5D1</color> <!-- Blue -->
 
 </resources>

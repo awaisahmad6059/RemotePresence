@@ -3,10 +3,7 @@ package com.aak.remotepresence.Authentication.User
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.aak.remotepresence.Authentication.User.UserFragment.UserAboutFragment
 import com.aak.remotepresence.Authentication.User.UserFragment.UserCreateNewTaskFragment
@@ -24,26 +21,25 @@ class UserDashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_dashboard)
 
-        val userDashboardFragment = UserDashboardFragment()
-        val bundle = Bundle()
-        bundle.putString("userId", userId)
-        userDashboardFragment.arguments = bundle
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, userDashboardFragment)
-            .commit()
-
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         userId = intent.getStringExtra("userId")
-        val userType = intent.getStringExtra("userType")
         val username = intent.getStringExtra("username")
 
         Toast.makeText(this, "Logged in as User: $username", Toast.LENGTH_SHORT).show()
 
         // Load default fragment
         if (savedInstanceState == null) {
-            loadFragment(UserDashboardFragment(), userId, false)
+            // Correctly instantiate and pass arguments to the initial fragment
+            val userDashboardFragment = UserDashboardFragment().apply {
+                arguments = Bundle().apply {
+                    putString("userId", userId)
+                }
+            }
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, userDashboardFragment)
+                .commit()
         }
+
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> loadFragment(UserDashboardFragment(), userId, true)
@@ -51,11 +47,10 @@ class UserDashboardActivity : AppCompatActivity() {
                 R.id.newtask -> loadFragment(UserCreateNewTaskFragment(), userId, true)
                 R.id.about -> loadFragment(UserAboutFragment(), userId, true)
                 R.id.profile -> loadFragment(UserProfileFragment(), userId, true)
-
-
             }
             true
         }
+
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
@@ -70,19 +65,23 @@ class UserDashboardActivity : AppCompatActivity() {
                 } else if (currentFragment is UserDashboardFragment) {
                     finish() // Exit app
                 } else {
-                    isEnabled = false
-                    onBackPressedDispatcher.onBackPressed()
+                    // This block is now less likely to be hit, but kept for safety
+                    if (supportFragmentManager.backStackEntryCount > 1) {
+                        supportFragmentManager.popBackStack()
+                    } else {
+                        isEnabled = false
+                        onBackPressedDispatcher.onBackPressed()
+                    }
                 }
             }
         })
-
     }
 
     private fun loadFragment(fragment: Fragment, userId: String?, withAnimation: Boolean) {
-        val bundle = Bundle().apply {
+        // The apply block correctly sets the arguments for the fragment
+        fragment.arguments = Bundle().apply {
             putString("userId", userId)
         }
-        fragment.arguments = bundle
 
         val transaction = supportFragmentManager.beginTransaction()
 
@@ -96,8 +95,8 @@ class UserDashboardActivity : AppCompatActivity() {
         }
 
         transaction.replace(R.id.fragment_container, fragment)
-        transaction.addToBackStack(null)
+        // Avoid building a large back stack for bottom navigation items
+        // transaction.addToBackStack(null) // Consider removing or managing this carefully
         transaction.commit()
     }
-
 }

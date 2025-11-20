@@ -12,7 +12,6 @@ import com.aak.remotepresence.Authentication.User.UserAdapter.UserRecentTaskAdap
 import com.aak.remotepresence.Authentication.User.UserModel.UserRecentTask
 import com.aak.remotepresence.R
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 
 class UserAllTasksFragment : Fragment() {
 
@@ -36,6 +35,7 @@ class UserAllTasksFragment : Fragment() {
         recyclerView = view.findViewById(R.id.allTasksRecycler)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = UserRecentTaskAdapter(taskList) { task ->
+            // Handle task item click if needed
         }
         recyclerView.adapter = adapter
 
@@ -48,26 +48,23 @@ class UserAllTasksFragment : Fragment() {
         userId?.let { uid ->
             firestore.collection("tasks")
                 .whereEqualTo("userId", uid)
-                .whereEqualTo("status", "pending")
                 .get()
                 .addOnSuccessListener { documents ->
                     taskList.clear()
                     if (documents.isEmpty) {
-                        Log.d("UserDashboard", "No tasks found for user $uid")
+                        Log.d("UserAllTasksFragment", "No tasks found for user $uid")
                     }
                     for (doc in documents) {
-                        Log.d("UserDashboard", "Found task: ${doc.data}")
                         val task = doc.toObject(UserRecentTask::class.java).copy(taskId = doc.id)
                         taskList.add(task)
                     }
                     adapter.notifyDataSetChanged()
                 }
                 .addOnFailureListener { e ->
-                    Log.e("UserDashboard", "Failed to fetch tasks", e)
+                    Log.e("UserAllTasksFragment", "Failed to fetch tasks", e)
                 }
         } ?: run {
-            Log.e("UserDashboard", "User ID is null")
+            Log.e("UserAllTasksFragment", "User ID is null")
         }
     }
-
 }

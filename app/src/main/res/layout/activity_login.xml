@@ -52,9 +52,23 @@
             android:drawableStart="@drawable/password"
             android:layout_marginTop="16dp"
             android:padding="12dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/rounded_corner_background"
             android:inputType="textPassword" />
+
+        <!-- Forgot Password link -->
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:textColor="@color/btncolor"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="end"
+            android:clickable="true"
+            android:focusable="true" />
 
         <!-- Sign in button -->
         <Button
@@ -62,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign in"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/btncolor"
             android:textColor="@color/white"
             android:textSize="18sp"

@@ -8,20 +8,21 @@
 
     <item
         android:id="@+id/mytask"
-        android:icon="@drawable/history"
-        android:title="My Tasks" />
+
+        android:icon="@drawable/allorders"
+        android:title="All Orders" />
 
     <item
         android:id="@+id/newtask"
-        android:icon="@drawable/add"
-        android:title="New Tasks" />
+        android:icon="@drawable/neworder"
+        android:title="New Order" />
     <item
         android:id="@+id/about"
         android:icon="@drawable/about"
         android:title="About" />
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/account_24"
+        android:icon="@drawable/profileicon"
         android:title="Profile" />
 
 

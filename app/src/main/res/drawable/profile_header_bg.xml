@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Soft rounded card like the screenshot -->
+            <corners android:radius="12dp" />
+            <!-- Subtle green diagonal/angle feel using gradient -->
+            <gradient
+                android:startColor="#2DA34A"
+                android:centerColor="#2AA046"
+                android:endColor="#239A40"
+                android:angle="315" />
+            <padding
+                android:left="16dp"
+                android:top="16dp"
+                android:right="16dp"
+                android:bottom="16dp" />
+        </shape>
+    </item>
+
+    <!-- Optional faint overlay lines effect (very subtle) -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="12dp" />
+            <stroke android:width="0.5dp" android:color="#1FFFFFFF"/>
+        </shape>
+    </item>
+</layer-list>

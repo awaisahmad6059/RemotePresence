@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "299357448600",
-    "project_id": "sahulatkaar-c013e",
-    "storage_bucket": "sahulatkaar-c013e.firebasestorage.app"
+    "project_number": "306594894139",
+    "project_id": "sahulatkaar-f2c3b",
+    "storage_bucket": "sahulatkaar-f2c3b.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:299357448600:android:e6241307ac2fa9fef1e3ed",
+        "mobilesdk_app_id": "1:306594894139:android:733808e064579efa48e71e",
         "android_client_info": {
           "package_name": "com.aak.remotepresence"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDquMsdWkACMHw7SP0_SnmSsz3_n64aUpI"
+          "current_key": "AIzaSyCXFaAGxsd9lh4s2F6MjS4PEomr0MQRa-4"
         }
       ],
       "services": {

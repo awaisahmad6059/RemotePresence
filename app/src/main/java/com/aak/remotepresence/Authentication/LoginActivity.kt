@@ -1,22 +1,14 @@
 package com.aak.remotepresence.Authentication
 
 import android.app.ProgressDialog
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.aak.remotepresence.Authentication.Admin.AdminDashboardActivity
 import com.aak.remotepresence.Authentication.User.UserDashboardActivity
 import com.aak.remotepresence.R
@@ -32,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog
     private lateinit var mAuth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
+    private lateinit var tvForgotPassword: TextView   // ✅ Added
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
         inputPassword = findViewById(R.id.et_password)
         btnLogin = findViewById(R.id.btn_sign_in)
         tvSignUp = findViewById(R.id.tv_sign_up)
+        tvForgotPassword = findViewById(R.id.tv_forgot_password) // ✅ initialize
         progressDialog = ProgressDialog(this)
         mAuth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
@@ -53,15 +47,38 @@ class LoginActivity : AppCompatActivity() {
             loginUser()
         }
 
+        // ✅ Forgot Password functionality
+        tvForgotPassword.setOnClickListener {
+            val email = inputEmail.text.toString().trim()
+            if (email.isEmpty()) {
+                Toast.makeText(this, "Please enter your email first", Toast.LENGTH_SHORT).show()
+            } else {
+                mAuth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // ✅ Show AlertDialog instead of Toast
+                            AlertDialog.Builder(this)
+                                .setTitle("Reset Email Sent")
+                                .setMessage("We’ve sent a password reset link to $email. If you don’t see it, please check your Spam or Junk folder.")
+                                .setPositiveButton("Open Email") { _, _ ->
+                                    val intent = Intent(Intent.ACTION_MAIN)
+                                    intent.addCategory(Intent.CATEGORY_APP_EMAIL)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    startActivity(intent)
+                                }
+                                .setNegativeButton("OK", null)
+                                .show()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "Error: ${task.exception?.message}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+            }
+        }
     }
-
-
-
-
-
-
-
-
 
     private fun loginUser() {
         val email = inputEmail.text.toString().trim()
@@ -89,7 +106,6 @@ class LoginActivity : AppCompatActivity() {
                             startActivity(intent)
                             finish()
                         } else {
-                            // If not found in admins, check in users
                             firestore.collection("users").document(userId).get()
                                 .addOnSuccessListener { userDoc ->
                                     progressDialog.dismiss()
@@ -98,10 +114,7 @@ class LoginActivity : AppCompatActivity() {
 
                                         val intent = Intent(this, UserDashboardActivity::class.java)
                                         intent.putExtra("userId", userId)
-                                        intent.putExtra(
-                                            "username",
-                                            username
-                                        ) // ✅ passing username here
+                                        intent.putExtra("username", username)
                                         startActivity(intent)
                                         finish()
                                     } else {
@@ -118,8 +131,7 @@ class LoginActivity : AppCompatActivity() {
                                         .show()
                                 }
                         }
-
-                        }
+                    }
                     .addOnFailureListener {
                         progressDialog.dismiss()
                         Toast.makeText(this, "Error: ${it.message}", Toast.LENGTH_SHORT).show()
